@@ -1,3 +1,6 @@
+
+require 'net/https'
+
 class CalculoController < ApplicationController
 
     def calcular
@@ -13,12 +16,8 @@ class CalculoController < ApplicationController
           http.request(req)
         }
         json = JSON.parse(res.body)
-        pp json
-        #Costo de financiamiento (costo de operar la factura con nosotros) = (Monto de la factura * Porcentaje de anticipo) * (Tasa de Negocio / 30 * Días de plazo[Días corridos desde hoy hasta la fecha de vencimiento + 1 dia extra])
-        financial_cost = (document_amount * json["advance_percent"]/100) * ((json["document_rate"]/100)/30*(expiration_date-Date.today).to_i)
-        #Giro a recibir = (1000000 * (99.0/100)) - (1000000 * (99.0 / 100) * ((1.9/100) / 30 * 31)) - (23990)
-        money_receive = (document_amount * (json["advance_percent"]/100)) - ( financial_cost + json["commission"])
-        #Excedentes = 1000000 - (1000000 * (99.0/100))
+        financial_cost = (document_amount * json["advance_percent"]/100) * ((json["document_rate"]/100)/30*((expiration_date-Date.today).to_i+1))
+        money_receive = (document_amount * json["advance_percent"]/100) - ( financial_cost + json["commission"])
         surplus = document_amount-(document_amount*(json["advance_percent"]/100))
         render json: {
                         "financial_cost": financial_cost,

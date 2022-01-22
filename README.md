@@ -1,24 +1,24 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Prueba:
 
-Things you may want to cover:
+http://127.0.0.1:3000/calculo?client_dni=76329692-K&debtor_dni=77360390-1&document_amount=1000000&folio=75&expiration_date=2022-08-13
 
-* Ruby version
+api de Chita entrega los siguientes valores:
+{
+    "document_rate": 0.89,
+    "commission": 0.0,
+    "advance_percent": 99.0
+}
 
-* System dependencies
+Resultado que entrega mi aplicación:
 
-* Configuration
+{
+    "financial_cost": "60208.4999999999934",
+    "money_receive": "929791.5000000000066",
+    "surplus": "10000.0"
+}
 
-* Database creation
+Controller: [enlace](https://github.com/tcero76/pruebaChita/blob/master/app/controllers/calculo_controller.rb)
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Test: [enlace](https://github.com/tcero76/pruebaChita/blob/master/test/controllers/calculo_controller_test.rb)
