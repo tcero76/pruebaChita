@@ -16,7 +16,7 @@ class CalculoController < ApplicationController
           http.request(req)
         }
         json = JSON.parse(res.body)
-        financial_cost = (document_amount * json["advance_percent"]/100) * ((json["document_rate"]/100)/30*((expiration_date-Date.today).to_i+1))
+        financial_cost = (document_amount * json["advance_percent"]/100) * ((json["document_rate"])/30*((expiration_date-Date.today).to_i+1))
         money_receive = (document_amount * json["advance_percent"]/100) - ( financial_cost + json["commission"])
         surplus = document_amount-(document_amount*(json["advance_percent"]/100))
         render json: {

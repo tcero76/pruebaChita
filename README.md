@@ -14,8 +14,8 @@ api de Chita entrega los siguientes valores:
 Resultado que entrega mi aplicación:
 
 {
-    "financial_cost": "60208.4999999999934",
-    "money_receive": "929791.5000000000066",
+    "financial_cost": "6020850.00000000033",
+    "money_receive": "-5030850.00000000033",
     "surplus": "10000.0"
 }
 
